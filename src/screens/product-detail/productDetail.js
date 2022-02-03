@@ -8,19 +8,21 @@ import {
 } from 'react-native';
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const { width, height } = Dimensions.get('window');
 
 const ProductDetail = ({ navigation, route }) => {
-	const { product } = route.params;
+	/* las constantes requeridas para usar redux*/
+	const bread = useSelector((state) => state.breads.selected);
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.data}>
-				<Text style={styles.title}>{product.name}</Text>
-				<Text style={styles.information}>{product.description}</Text>
-				<Text style={styles.information}>{product.weight}</Text>
-				<Text style={styles.informationPrice}>$ {product.price}</Text>
+				<Text style={styles.title}>{bread.name}</Text>
+				<Text style={styles.information}>{bread.description}</Text>
+				<Text style={styles.information}>{bread.weight}</Text>
+				<Text style={styles.informationPrice}>$ {bread.price}</Text>
 			</View>
 			<View>
 				<Button
